@@ -18,7 +18,7 @@
   </body>
   <script type="text/javascript">
   	//DOM load event
-window.addEventListener("DOMContentLoaded",	() => {
+	window.addEventListener("DOMContentLoaded",	() => {
 
     //Check that page is not running in a CodePen preview iframe
     if (!document.body.hasAttribute('translate')) {
@@ -36,7 +36,6 @@ window.addEventListener("DOMContentLoaded",	() => {
         recognition.onresult = (e) => {
             //Get transcript of user speech
             const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, '');
-            console.log("transcript: "+transcript);
             //Output transcript
             searchTxt.value = transcript;
 		};
