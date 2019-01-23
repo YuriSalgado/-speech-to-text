@@ -33,16 +33,18 @@ window.addEventListener("DOMContentLoaded",	() => {
         recognition.start();
 
         //Listen for when the user finishes talking
-        recognition.addEventListener('result', e => {
+        recognition.onresult = (e) => {
             //Get transcript of user speech
             const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, '');
             console.log("transcript: "+transcript);
             //Output transcript
             searchTxt.value = transcript;
-		});
+		};
 
 		//Restart speech recognition after user has finished talking
-        recognition.addEventListener('end', recognition.start);
+        recognition.onend = () => {
+        	recognition.start();
+        };
 
     }
 });
