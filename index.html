@@ -16,4 +16,35 @@
 		</a>
 	</div>
   </body>
+  <script type="text/javascript">
+  	//DOM load event
+window.addEventListener("DOMContentLoaded",	() => {
+
+    //Check that page is not running in a CodePen preview iframe
+    if (!document.body.hasAttribute('translate')) {
+
+        //Set speech recognition
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        const recognition = new SpeechRecognition(),
+        	searchBox = document.querySelector('.search-box'),
+            searchTxt = document.querySelector('.search-txt');
+
+        recognition.start();
+
+        //Listen for when the user finishes talking
+        recognition.addEventListener('result', e => {
+            //Get transcript of user speech
+            const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, '');
+            //Output transcript
+            searchTxt.value = transcript;
+		});
+
+		//Restart speech recognition after user has finished talking
+        recognition.addEventListener('end', recognition.start);
+
+    }
+});
+
+  </script>
 </html>
