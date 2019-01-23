@@ -36,6 +36,7 @@ window.addEventListener("DOMContentLoaded",	() => {
         recognition.addEventListener('result', e => {
             //Get transcript of user speech
             const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, '');
+            console.log("transcript: "+transcript);
             //Output transcript
             searchTxt.value = transcript;
 		});
